@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoggerService } from './services/logger.service';
+import { Product } from './model/product';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,8 @@ export class AppComponent {
   date: Date = new Date();
   dateFormatter: string = 'yyyy-MM-dd hh:mm:ss';
 
+  phrase: string = "";
+  
   columns: {key: string, title: string}[] = [
     {key: "id", title: "#"},
     {key: "price", title: "Price"},
@@ -21,53 +24,54 @@ export class AppComponent {
     {key: "description", title: "Desc."},
     {key: "name", title: "Name"},
   ];
-
-  list: any[] = [
+  filterKey: string = this.columns[0].key;
+  
+  list: Product[] = [
     {
       id: 1,
       name: "Vasaló",
       price: 9900,
       description: "Jó vasaló",
-      itemCode: "sdjflsdjf42342lfj"
+      itemCode: "it-54333"
     },
     {
       id: 2,
-      name: "Vasaló",
-      price: 9900,
-      description: "Jó vasaló",
-      itemCode: "sdjflsdjf42342lfj"
+      name: "Fűnyíró",
+      price: 25000,
+      description: "Jó",
+      itemCode: "sdfsdfsd"
     },
     {
       id: 3,
-      name: "Vasaló",
-      price: 9900,
-      description: "Jó vasaló",
-      itemCode: "sdjflsdjf42342lfj"
+      name: "Lombszívó",
+      price: 45000,
+      description: "",
+      itemCode: "20121222"
     },
     {
       id: 4,
-      name: "Vasaló",
-      price: 9900,
-      description: "Jó vasaló",
-      itemCode: "sdjflsdjf42342lfj"
+      name: "Mikrohullámú sütő",
+      price: 29000,
+      description: "Moulinex",
+      itemCode: "sdfsfsfsdf"
     },
     {
       id: 5,
-      name: "Vasaló",
-      price: 9900,
-      description: "Jó vasaló",
-      itemCode: "sdjflsdjf42342lfj"
+      name: "Proszívó",
+      price: 78000,
+      description: "Bosch",
+      itemCode: "it-444222"
     },
   ];
 
   constructor(
     private logger: LoggerService
   ) {
-    setInterval(() => {
+    /* setInterval(() => {
       this.count++;
       this.date = new Date();
       this.logger.critical("Isn't critical");
-    }, 1000);
+    }, 1000); */
   }
 
   /**

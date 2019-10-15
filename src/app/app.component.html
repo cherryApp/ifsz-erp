@@ -1,4 +1,18 @@
 <div class="container">  
+  <div class="row mb-3 mt-3">
+    <div class="col-4">
+      <input [(ngModel)]="phrase" type="text" class="form-control">
+      <!-- {{ phrase }} -->
+    </div>
+    <div class="col-2">
+      <select [(ngModel)]="filterKey" class="form-control">
+        <option value="" selected>any</option>
+        <option *ngFor="let col of columns" [value]="col.key">
+          {{ col.title }}
+        </option>
+      </select>
+    </div>
+  </div>
   <table class="table table-hover table-sm list-table">
     <thead>
       <tr>
@@ -8,7 +22,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of list">
+      <tr *ngFor="let item of list | filter:phrase:filterKey">
         <td *ngFor="let col of columns">
           {{ item[col.key] }}
         </td>
@@ -19,16 +33,7 @@
   <div class="list-card">
     <div class="row">
       <div *ngFor="let item of list" class="col-12 col-sm-6 col-md-4">
-        <div class="card mb-4">
-          <div class="card-body">
-            <h5 class="card-title">{{ item.name }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ item.itemCode }}</h6>
-            <p class="card-text">{{ item.description }}</p>
-            <p><b>{{ item.price }}</b></p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
+          <app-detail-card [item]="item"></app-detail-card>
       </div>
     </div>
   </div>
