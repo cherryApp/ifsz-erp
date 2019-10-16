@@ -19,7 +19,6 @@ export class FilterPipe implements PipeTransform {
         let jsonItem: string = JSON.stringify(item)
           .replace(/"[^"]*"\:/g, '')
           .replace(/[",\{\}]/g, '');
-        console.log(jsonItem);
         return jsonItem.toLowerCase()
           .indexOf(phrase.toLowerCase()) > -1;
       } else {

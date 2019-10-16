@@ -4,6 +4,7 @@ export class Product {
     price: number =  0;
     description?: string =  "";
     itemCode: string =  "";
+    manufacturer: string = "";
 
     get name(): string {
         return this.p_name;

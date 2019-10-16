@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
-import { LoggerService } from './services/logger.service';
-import { Product } from './model/product';
-import { ProductService } from './services/product.service';
+import { LoggerService } from '../../services/logger.service';
+import { Product } from '../../model/product';
+import { ProductService } from '../../services/product.service';
 import { Observable, fromEvent, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.css'],
   providers: [LoggerService]
 })
-export class AppComponent {
+export class ProductComponent {
   // Title of the application.
   title: string = 'ifsz-erp application';
   count: number = 0;

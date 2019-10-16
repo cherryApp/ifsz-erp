@@ -1,0 +1,47 @@
+<div class="container">  
+    <div class="row mb-3 mt-3">
+      <div class="col-4">
+        <input [(ngModel)]="phrase" type="text" class="form-control">
+        <!-- {{ phrase }} -->
+      </div>
+      <div class="col-2">
+        <select [(ngModel)]="filterKey" class="form-control">
+          <option value="" selected>any</option>
+          <option *ngFor="let col of columns" [value]="col.key">
+            {{ col.title }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <table *ngIf="currentWidth > 992" class="table table-hover table-sm list-table">
+      <thead>
+        <tr>
+          <th *ngFor="let col of columns">
+            {{ col.title }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of list$ | async | filter:phrase:filterKey">
+          <td *ngFor="let col of columns">
+            {{ item[col.key] }}
+          </td>
+          <td>
+            <div class="btn-group">
+              <a routerLink="/products/{{ item.id }}" class="btn btn-info btn-sm">
+                edit
+              </a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div *ngIf="currentWidth < 993" class="list-card">
+      <div class="row">
+        <div *ngFor="let item of list$ | async | filter:phrase:filterKey" class="col-12 col-sm-6 col-md-4">
+            <app-detail-card [item]="item"></app-detail-card>
+        </div>
+      </div>
+    </div>
+  </div>
