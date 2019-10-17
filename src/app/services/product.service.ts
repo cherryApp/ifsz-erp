@@ -25,4 +25,11 @@ export class ProductService {
   get(id: string | number): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.apiUrl}/${id}`);
   }
+
+  update(product: Product): Observable<any> {
+    return this.http.put(
+      `${this.apiUrl}/${product.id}`,
+      product
+    );
+  }
 }
