@@ -1,24 +1,55 @@
 <div class="container">
     <div class="row">
         <div class="col-6 offset-3">
-            <form (ngSubmit)="onSubmit()">
+            <form #editForm="ngForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
-                    <label for="">Name</label>
-                    <input name="name" [(ngModel)]="product.name" type="text" class="form-control">
+                    <label for="">Name (min 5, max 20 karaketer)</label>
+                    <input 
+                        name="name" 
+                        [(ngModel)]="product.name" 
+                        type="text" 
+                        class="form-control" 
+                        required 
+                        #productName="ngModel" 
+                        pattern="^[a-zA-Z0-9 ]{5,20}$">
+                    <div 
+                        [hidden]="productName.valid || productName.pristine"
+                        class="alert alert-danger">
+                        Az adat nem megfelelő!
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="">Manufacturer</label>
                     <input name="manufacturer" [(ngModel)]="product.manufacturer" type="text" class="form-control"></div>
                 <div class="form-group">
-                    <label for="">Price</label>
-                    <input name="price" [(ngModel)]="product.price" type="number" class="form-control"></div>
+                    <label for="">Price (kötelező, csak szám lehet)</label>
+                    <input 
+                        name="price" 
+                        [(ngModel)]="product.price" 
+                        type="number" 
+                        class="form-control" 
+                        required 
+                        #productPrice="ngModel">
+                    <div 
+                        [hidden]="productPrice.valid || productPrice.pristine"
+                        class="alert alert-danger">
+                        Az adat nem megfelelő!
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="">Description</label>
                     <input name="description" [(ngModel)]="product.description" type="text" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-primary">
+                <button 
+                    [disabled]="!editForm.form.valid" 
+                    type="submit" class="btn mr-2" 
+                    [class.btn-primary]="editForm.form.valid" 
+                    [class.btn-secondary]="editForm.form.invalid">
                     Save
                 </button>
+                <a routerLink="/products" class="btn btn-secondary">
+                    Cancel
+                </a>
             </form>
         </div>
     </div>
