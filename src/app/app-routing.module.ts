@@ -4,6 +4,7 @@ import { ProductComponent } from './pages/product/product.component';
 import { IndexComponent } from './pages/index/index.component';
 import { ProductEditComponent } from './pages/product-edit/product-edit.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ProductCreateComponent } from './pages/product-create/product-create.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: "products",
     component: ProductComponent
+  },
+  {
+    path: "products/create",
+    component: ProductCreateComponent
   },
   {
     path: "products/:id",

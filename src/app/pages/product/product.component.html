@@ -13,12 +13,22 @@
         </select>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-12">
+        <a class="btn btn-success btn-block mb-3" routerLink="/products/create">
+          Create new product
+        </a>
+      </div>
+    </div>
+
     <table *ngIf="currentWidth > 992" class="table table-hover table-sm list-table">
       <thead>
         <tr>
           <th *ngFor="let col of columns">
             {{ col.title }}
           </th>
+          <th></th>
         </tr>
       </thead>
       <tbody>

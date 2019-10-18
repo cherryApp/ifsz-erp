@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,7 @@ import { NavComponent } from './common/nav/nav.component';
 import { ProductEditComponent } from './pages/product-edit/product-edit.component';
 import { LoginComponent } from './pages/login/login.component';
 import { JwtInterceptorService } from './services/jwt-interceptor.service';
+import { ProductCreateComponent } from './pages/product-create/product-create.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +24,15 @@ import { JwtInterceptorService } from './services/jwt-interceptor.service';
     IndexComponent,
     NavComponent,
     ProductEditComponent,
-    LoginComponent
+    LoginComponent,
+    ProductCreateComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true},

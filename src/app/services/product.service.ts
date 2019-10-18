@@ -32,4 +32,8 @@ export class ProductService {
       product
     );
   }
+
+  create(product: any): Observable<any> {
+    return this.http.post(this.apiUrl, product);
+  }
 }
