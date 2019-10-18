@@ -36,4 +36,8 @@ export class ProductService {
   create(product: any): Observable<any> {
     return this.http.post(this.apiUrl, product);
   }
+
+  validate(name: string, product: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/validate`, product);
+  }
 }
